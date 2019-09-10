@@ -1,4 +1,4 @@
-from tarefas import Tarefas
+from classTarefas import Tarefas
 from flask import Flask, request, jsonify
 
 tf = Tarefas()
