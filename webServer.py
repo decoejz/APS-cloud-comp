@@ -19,7 +19,7 @@ def umaTarefa(id_tarefa):
         return tf.mostraTarefa(id_tarefa)
     elif request.method == 'PUT':
         updated_tarefa = request.get_json()
-        tf.atualizaTarefa(id_tarefa,updated_tarefa['tareafa atualizada'])
+        tf.atualizaTarefa(id_tarefa,updated_tarefa['tarefa atualizada'])
     elif request.method == 'DELETE':
         tf.apagaTarefa(id_tarefa)
     return ('200')
