@@ -63,22 +63,22 @@ try:
         print('''
 Você digitou um comando inválido. Veja abaixo as opções de comando para fazer o que deseja.
 
-    1) \033[1;32;40mlistar\033[0;37;40m -
+    1) \033[1;32;49mlistar\033[0;49;49m -
         Lista todas as tarefas existentes
         
-    2) \033[1;32;40madicionar \033[1;33;40m[tarefa para ser adicionada]\033[0;37;40m -
+    2) \033[1;32;49madicionar \033[1;33;49m[tarefa para ser adicionada]\033[0;49;49m -
         Adiciona uma nova tarefa na sua lista
         
-    3) \033[1;32;40mbuscar \033[1;33;40m[id]\033[0;37;40m -
+    3) \033[1;32;49mbuscar \033[1;33;49m[id]\033[0;49;49m -
         Busca a tarefa atrelada ao id colocado e te retorna o que ela é
     
-    4) \033[1;32;40mapagar \033[1;33;40m[id]\033[0;37;40m -
+    4) \033[1;32;49mapagar \033[1;33;49m[id]\033[0;49;49m -
         Apaga a tarefa atrelada ao id colocado
 
-    5) \033[1;32;40matualizar \033[1;33;40m[id] [nova valor da tarefa]\033[0;37;40m -
+    5) \033[1;32;49matualizar \033[1;33;49m[id] [nova valor da tarefa]\033[0;49;49m -
         Atualiza a tarefa atrelada ao id colocado
     ''')
     else:
-        print("Você digitou um comando inválido tente digitar \033[1;32;40mtarefa \033[1;33;40mhelp\033[0;37;40m para ver as opções")
+        print("Você digitou um comando inválido tente digitar \033[1;32;49mtarefa \033[1;33;49mhelp\033[0;49;49m para ver as opções")
 except:
-    print("Você digitou um comando inválido tente digitar \033[1;32;40mtarefa \033[1;33;40mhelp\033[0;37;40m para ver as opções")
+    print("Você digitou um comando inválido tente digitar \033[1;32;49mtarefa \033[1;33;49mhelp\033[0;49;49m para ver as opções")
