@@ -40,23 +40,45 @@ def update_one(atributos):
 
 ip_address = os.environ.get("BASIC_URL")
 
-argument = sys.argv[1]
-returned = ""
+try:
+    argument = sys.argv[1]
+    returned = ""
 
-if (argument == "adicionar"):
-    add_task(sys.argv[2:])
+    if (argument == "adicionar"):
+        add_task(sys.argv[2:])
 
-elif (argument == "listar"):
-    list_all()
+    elif (argument == "listar"):
+        list_all()
 
-elif (argument == "buscar"):
-    search_one(sys.argv[2])
+    elif (argument == "buscar"):
+        search_one(sys.argv[2])
 
-elif (argument == "apagar"):
-    erase_one(sys.argv[2])
+    elif (argument == "apagar"):
+        erase_one(sys.argv[2])
 
-elif (argument == "atualizar"):
-    update_one(sys.argv[2:])
+    elif (argument == "atualizar"):
+        update_one(sys.argv[2:])
 
-else:
-    print("Argumento inválido!")
+    elif (argument == "help"):
+        print('''
+Você digitou um comando inválido. Veja abaixo as opções de comando para fazer o que deseja.
+
+    1) \033[1;32;40mlistar\033[0;37;40m -
+        Lista todas as tarefas existentes
+        
+    2) \033[1;32;40madicionar \033[1;33;40m[tarefa para ser adicionada]\033[0;37;40m -
+        Adiciona uma nova tarefa na sua lista
+        
+    3) \033[1;32;40mbuscar \033[1;33;40m[id]\033[0;37;40m -
+        Busca a tarefa atrelada ao id colocado e te retorna o que ela é
+    
+    4) \033[1;32;40mapagar \033[1;33;40m[id]\033[0;37;40m -
+        Apaga a tarefa atrelada ao id colocado
+
+    5) \033[1;32;40matualizar \033[1;33;40m[id] [nova valor da tarefa]\033[0;37;40m -
+        Atualiza a tarefa atrelada ao id colocado
+    ''')
+    else:
+        print("Você digitou um comando inválido tente digitar \033[1;32;40mtarefa \033[1;33;40mhelp\033[0;37;40m para ver as opções")
+except:
+    print("Você digitou um comando inválido tente digitar \033[1;32;40mtarefa \033[1;33;40mhelp\033[0;37;40m para ver as opções")
