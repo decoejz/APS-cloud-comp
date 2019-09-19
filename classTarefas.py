@@ -12,10 +12,24 @@ class Tarefas:
         return(self.tarefas_dic)
 
     def mostraTarefa(self,tarefaId):
-        return(self.tarefas_dic[tarefaId])
+        try:
+            return(self.tarefas_dic[tarefaId])
+        except Exception as e:
+            return 1
 
     def apagaTarefa(self, tarefaId):
-        del self.tarefas_dic[tarefaId]
+        try:
+            del self.tarefas_dic[tarefaId]
+            return 0
+        except Exception as e:
+            return 1
 
     def atualizaTarefa(self,tarefaId, atualTarefa):
-        self.tarefas_dic[tarefaId] = atualTarefa
+        try:
+            if tarefaId in self.tarefas_dic:
+                self.tarefas_dic[tarefaId] = atualTarefa
+                return 0
+            else:
+                raise Exception()
+        except Exception as e:
+            return 1
