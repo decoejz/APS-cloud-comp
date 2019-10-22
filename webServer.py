@@ -45,7 +45,7 @@ def umaTarefa(id_tarefa):
 
 @app.route('/healthcheck/')
 def checkStatus():
-    return ('',200)
+    return ('Servidor Saudavel',200)
 
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0')
