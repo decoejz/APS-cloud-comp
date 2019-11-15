@@ -1,1 +1,1 @@
-export BASIC_URL="localhost:5000"
+export BASIC_URL="localhost:8080"

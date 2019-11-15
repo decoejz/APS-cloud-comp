@@ -1,51 +1,49 @@
+import json
 from classTarefas import Tarefas
 from flask import Flask, request, jsonify
 
-tf = Tarefas()
+dependencias = {}
+with open("./hosts.json") as json_file:
+    data = json.load(json_file)
+    for p in data:
+        dependencias[p] = data[p]
+
+db_host_ip = dependencias["db_host"]
+hostname = dependencias["hostname"]
+port = dependencias["port"]
+
+tf = Tarefas(db_host_ip)
 app = Flask(__name__)
 
 @app.route('/Tarefa/', methods=['GET', 'POST'])
 def mainTarefas():
     if request.method == 'GET':
-        return jsonify(tf.listaTarefas()),200
+        return tf.listaTarefas(),200
     elif request.method == 'POST':
         new_tarefa = request.get_json()
         tf.criaTarefa(new_tarefa["nova tarefa"])
-        return ('',201)
+        return ('CREATED',201)
 
 @app.route('/Tarefa/<int:id_tarefa>', methods=['GET', 'PUT', 'DELETE'])
 def umaTarefa(id_tarefa):
     if request.method == 'GET':
-        try:
-            tarefa_des = tf.mostraTarefa(id_tarefa)
-            if (tarefa_des == 1):
-                raise Exception('Index not available')
-            return str(tarefa_des),200
-        except Exception as e:
-            return str(e),400
-    
+        tarefa_des = tf.mostraTarefa(id_tarefa)
+        if (tarefa_des == None):
+            return ('NONEXISTENT'),200
+        return tarefa_des,200
+        
     elif request.method == 'PUT':
-        try:
-            updated_tarefa = request.get_json()
-            status = tf.atualizaTarefa(id_tarefa,updated_tarefa['tarefa atualizada'])
-            if (status):
-                raise Exception('Index not available')
-            return('',200)
-        except Exception as e:
-            return str(e),400
+        updated_tarefa = request.get_json()
+        tf.atualizaTarefa(id_tarefa,updated_tarefa['tarefa atualizada'])
+        return 'UPDATED',200
     
     elif request.method == 'DELETE':
-        try:
-            status = tf.apagaTarefa(id_tarefa)
-            if (status):
-                raise Exception('Index not available')
-            return ('',200)
-        except Exception as e:
-            return str(e),400
+        tf.apagaTarefa(id_tarefa)
+        return ('DELETED',200)
 
 @app.route('/healthcheck/')
 def checkStatus():
     return ('Servidor Saudável',200)
 
 if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0',port='8080')
+    app.run(debug=True,host=hostname,port=port)
