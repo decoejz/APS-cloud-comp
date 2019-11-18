@@ -9,7 +9,7 @@ class Tarefas:
         self.db = client.aplicacao
 
         dependencias = {}
-        with open("./id.json") as json_file:
+        with open("/APS-cloud-comp/id.json") as json_file:
             data = json.load(json_file)
             for p in data:
                 dependencias[p] = data[p]
@@ -46,5 +46,5 @@ class Tarefas:
 
     def add_id(self):
         self.idTarefa+=1
-        with open('./id.json','w') as f:
+        with open('/APS-cloud-comp/id.json','w') as f:
             json.dump({"id": self.idTarefa},f)

@@ -3,7 +3,7 @@ from classTarefas import Tarefas
 from flask import Flask, request, jsonify
 
 dependencias = {}
-with open("./hosts.json") as json_file:
+with open("/APS-cloud-comp/hosts.json") as json_file:
     data = json.load(json_file)
     for p in data:
         dependencias[p] = data[p]
